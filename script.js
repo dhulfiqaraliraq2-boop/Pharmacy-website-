@@ -1,1 +1,36 @@
-console.log("Dr Pharmacy Website Loaded");
+document.addEventListener("DOMContentLoaded", () => {
+
+const cards = document.querySelectorAll(
+".service-card, .why-card, .contact-card, .quick-card"
+);
+
+const observer = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},{
+threshold:0.2
+});
+
+cards.forEach(card=>{
+
+card.style.opacity="0";
+
+card.style.transform="translateY(40px)";
+
+card.style.transition="all .7s ease";
+
+observer.observe(card);
+
+});
+
+});
